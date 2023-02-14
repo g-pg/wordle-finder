@@ -1,0 +1,303 @@
+*,
+*::before,
+*::after {
+	margin: 0;
+	box-sizing: border-box;
+}
+
+button,
+input {
+	font: inherit;
+}
+
+img {
+	max-width: 100%;
+}
+
+body {
+	min-height: 100vh;
+}
+
+.container {
+	margin: 0 auto;
+	max-width: 1280px;
+	/* Customizar */
+	/* padding: 1rem; */
+	position: relative;
+}
+
+/*  */
+
+:root {
+	--green: #538d4e;
+	--grey: #3a3a3c;
+}
+
+body {
+	min-height: 100vh;
+	background-color: #1b1b1b;
+	font-family: "Inter", sans-serif;
+}
+
+header {
+	background: #000724;
+	color: #fefefe;
+	padding: 0.7rem 1.2rem;
+}
+
+/* Burger */
+.burger-container {
+	/* border: 1px solid #fefefe; */
+	width: 25px;
+	aspect-ratio: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	cursor: pointer;
+}
+
+.burger-icon,
+.burger-icon::before,
+.burger-icon::after {
+	content: "";
+	width: 100%;
+	height: 3px;
+	background: #fefefe;
+	position: absolute;
+	border-radius: 10px;
+	transition: 0.3s ease-in-out;
+}
+
+.burger-icon::before {
+	transform: translateY(7px);
+}
+
+.burger-icon::after {
+	transform: translateY(-7px);
+}
+
+.burger-container.open .burger-icon {
+	transform: translate(50px);
+	background: transparent;
+}
+
+.burger-container.open .burger-icon::before {
+	transform: rotate(45deg) translate(-35px, 35px);
+}
+
+.burger-container.open .burger-icon::after {
+	transform: rotate(-45deg) translate(-35px, -35px);
+}
+
+.d-flex {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.header-title {
+	font-size: 0.8rem;
+}
+
+.game-container {
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	gap: 5px;
+}
+
+.game-table {
+	margin-top: 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2rem;
+}
+
+.wordle-line {
+	display: flex;
+	justify-content: center;
+	gap: 5px;
+}
+
+.wordle-square {
+	aspect-ratio: 1;
+	max-width: 60px;
+	border: 2px solid var(--grey);
+	background: none;
+	color: white;
+	text-align: center;
+	font-weight: 700;
+	font-size: 1.8rem;
+	text-transform: uppercase;
+	cursor: pointer;
+	user-select: none;
+}
+
+.wordle-square:focus {
+	outline: none;
+}
+
+.search-btn {
+	margin-top: 10px;
+	padding: 0.6rem 2rem;
+	background: var(--green);
+	border: none;
+	color: white;
+	cursor: pointer;
+}
+
+.search-btn:hover {
+	transform: scale(1.03);
+	filter: brightness(1.09);
+}
+
+.bg-grey {
+	background: rgb(138, 138, 138);
+}
+
+.bg-yellow {
+	background: rgb(201, 169, 29);
+}
+
+.bg-green {
+	background: #538d4e;
+}
+
+.possible-words-content {
+	color: white;
+	text-align: center;
+	text-justify: newspaper;
+	font-weight: 400;
+	line-height: 150%;
+	padding: 2rem;
+	font-size: 12px;
+}
+
+.main-nav {
+	color: white;
+	position: absolute;
+	left: 0;
+	background-color: #000724;
+	padding: 2rem 1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	gap: 5rem;
+	z-index: 999;
+	left: -100vw;
+	transition: 0.3s ease-in-out;
+	width: 300px;
+
+}
+
+.main-nav.open {
+	left: 0px;
+}
+
+.main-nav>ul {
+	list-style: none;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.8rem;
+}
+
+.main-nav li {
+	cursor: pointer
+}
+
+.dev-by {
+	font-size: 0.7rem;
+	font-weight: 100;
+	text-align: center;
+	line-height: 1.5;
+}
+
+.guide-popup {
+	max-width: 500px;
+	width: 80%;
+	margin: 0 auto;
+	background: #1b1b1b;
+	border: 1px solid #ffffff;
+	padding: 3rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	gap: 2rem;
+
+	-webkit-box-shadow: 0px 0px 0px 9999px rgba(0, 0, 0, 0.5);
+	box-shadow: 0px 0px 0px 9999px rgba(0, 0, 0, 0.5);
+
+
+}
+
+.guide-rule {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	gap: 15px;
+}
+
+.guide-rule-content,
+.colors-ul {
+	color: white;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 1.3;
+
+
+}
+
+.colors-ul {
+	color: white;
+	padding: 0;
+	margin: 0;
+
+	text-align: start;
+	list-style: none;
+}
+
+.colors-ul li {
+	padding: 0;
+	margin: 0;
+	text-indent: 0%;
+	margin-bottom: 10px;
+}
+
+.span-grey {
+	font-weight: 500;
+	color: #a3a3a3;
+}
+
+.span-yellow {
+	font-weight: 500;
+	color: rgb(231, 192, 19);
+}
+
+.span-green {
+	font-weight: 500;
+	color: #4eb645;
+}
+
+.guide-popup img {}
+
+@media (max-width: 400px) {
+	.wordle-square {
+		max-width: 45px;
+	}
+
+	.main-nav {
+		width: 80vw;
+	}
+
+	.guide-rule-content,
+	.guide-rule ul {
+		font-size: 13px;
+	}
+}
