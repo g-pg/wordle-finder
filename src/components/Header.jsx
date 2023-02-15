@@ -24,6 +24,7 @@ export function Header(props) {
 			return prevTheme === "dark-theme" ? "light-theme" : "dark-theme";
 		});
 		document.body.className = theme;
+		document.querySelector(".theme-toggler").classList.toggle("theme-toggler-toggle");
 	}
 	return (
 		<>
@@ -35,9 +36,10 @@ export function Header(props) {
 					>
 						<div className="burger-icon"></div>
 					</div>
-					<h1 className="header-title" onClick={toggleTheme}>
-						Wordle Finder
-					</h1>
+					<h1 className="header-title">Wordle Finder</h1>
+					<div className="theme-toggler" onClick={toggleTheme}>
+						<div className="theme-toggler-ball"></div>
+					</div>
 				</div>
 			</header>
 			<nav className={`main-nav ${burgerOpen ? "open" : ""}`}>

@@ -177,7 +177,7 @@ export default function WordleTable(props) {
 					Há mais palavras possíveis que estrelas no céu.
 					<br />
 					<br />
-					Complete mais uma linha e tente outra vez.
+					Complete a próxima linha e tente outra vez.
 				</>
 			);
 		} else if (possibleWords.length >= 1) {

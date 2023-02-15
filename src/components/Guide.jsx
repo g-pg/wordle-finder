@@ -40,9 +40,13 @@ export default function Guide(props) {
 					<div className="guide-rule">
 						<h4
 							className="guide-rule-content"
-							style={{ textDecoration: "underline", fontWeight: 600 }}
+							style={{
+								textDecoration: "underline",
+								fontWeight: 600,
+								marginTop: "1rem",
+							}}
 						>
-							Não use acentos!
+							Não use acentos nem símbolos!
 						</h4>
 					</div>
 				</div>
