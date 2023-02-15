@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { words } from "../data/words.js";
 import WordleLine from "./WordleLine";
-
+import resetIcon from "../assets/img/reset-icon.svg";
 export default function WordleTable(props) {
 	const [renderWords, setRenderWords] = useState(false);
 	const [possibleWords, setPossibleWords] = useState(words);
-	const [wordleLines, setWordleLines] = useState(() => {
+	const [wordleLines, setWordleLines] = useState(() => feedLines());
+
+	const [incompleteLine, setIncompleteLine] = useState(true);
+
+	function feedLines() {
 		let lines = [];
 		for (let i = 0; i < 6; i++) {
 			let line = [];
@@ -15,9 +19,7 @@ export default function WordleTable(props) {
 			lines.push(line);
 		}
 		return lines;
-	});
-
-	const [incompleteLine, setIncompleteLine] = useState(true);
+	}
 	function searchWords() {
 		setPossibleWords(words);
 
@@ -155,17 +157,35 @@ export default function WordleTable(props) {
 		} else if (possibleWords.length > 0) {
 			return possibleWords.join(", ") + ".";
 		} else {
-			return `Nenhuma palavra encontrada. Verifique se não há contradições na tabela.`;
+			return (
+				<>
+					Nenhuma palavra encontrada.
+					<br />
+					<br />
+					Verifique se não há contradições na tabela ou se você está usando acentos.
+				</>
+			);
 		}
 	}
-	useEffect(() => {}, [possibleWords, wordleLines]);
+
+	function resetTable() {
+		setRenderWords(false);
+		setWordleLines((prev) => (prev = feedLines()));
+		console.log(wordleLines);
+	}
+	// useEffect(() => {}, [possibleWords, wordleLines]);
 	return (
 		<>
 			<section className="game-table">
 				<div className="container game-container">{linesEl}</div>
-				<button className="search-btn" onClick={searchWords}>
-					Buscar
-				</button>
+				<div className="action-btns-container">
+					<button className="search-btn" onClick={searchWords}>
+						Buscar
+					</button>
+					<button className="reset-btn" onClick={resetTable}>
+						<img src={resetIcon} alt="reset" />
+					</button>
+				</div>
 			</section>
 			{renderWords && (
 				<section className="possible-words container">

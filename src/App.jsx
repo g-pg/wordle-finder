@@ -4,11 +4,16 @@ import Guide from "./components/Guide";
 import WordleTable from "./components/WordleTable";
 
 function App() {
+	const [guideOpen, setGuideOpen] = useState(true);
+
+	function openGuide() {
+		setGuideOpen((open) => !open);
+	}
 	return (
 		<>
-			<Header />
+			<Header openGuide={openGuide} />
 			<WordleTable />
-			<Guide />
+			<Guide isOpen={guideOpen} toggleOpen={openGuide} />
 		</>
 	);
 }

@@ -6,7 +6,12 @@ import Popup from "reactjs-popup";
 
 export default function Guide(props) {
 	return (
-		<Popup position="right center" defaultOpen={true} modal={true}>
+		<Popup
+			position="right center"
+			open={props.isOpen}
+			closeOnDocumentClick
+			onClose={props.toggleOpen}
+		>
 			<section className="guide-popup">
 				<div className="guide-rule">
 					<h4 className="guide-rule-content">Replique o seu jogo atual.</h4>

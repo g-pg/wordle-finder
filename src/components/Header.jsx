@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
-import Guide from "./Guide";
+import gitHubIcon from "../assets/img/github-icon.svg";
+import lnIcon from "../assets/img/linkedin-icon.svg";
 export function Header(props) {
 	const [burgerOpen, setburgerOpen] = useState(false);
 	const headerRef = useRef();
@@ -12,9 +13,8 @@ export function Header(props) {
 		document.querySelector(".main-nav").style.height = `calc(100vh - ${headerHeight}px)`;
 	}, []);
 
-	const [showPopup, setShowPopup] = useState(false);
 	function handleGuideClick() {
-		setShowPopup((show) => !show);
+		props.openGuide();
 		setburgerOpen(false);
 	}
 
@@ -44,19 +44,19 @@ export function Header(props) {
 						<br /> Gabriel Gusso
 					</h3>
 					<div className="social-icons-wrapper">
-						<a href="">
-							a<img src="" alt="" />
+						<a href="https://github.com/g-pg" target={"__blank"}>
+							<img src={gitHubIcon} alt="ícone github" />
 						</a>
-						<a href="">
-							a<img src="" alt="" />
-						</a>
-						<a href="">
-							a<img src="" alt="" />
+						<a
+							href="https://www.linkedin.com/in/gabriel-gusso-828045263/"
+							target="__blank"
+						>
+							<img src={lnIcon} alt="ícone linkedin" />
 						</a>
 					</div>
 				</div>
 			</nav>
-			{showPopup && <Guide onClick={() => setShowPopup(false)} />}
+			{/* <Guide /> */}
 		</>
 	);
 }

@@ -21,7 +21,6 @@ body {
 .container {
 	margin: 0 auto;
 	max-width: 1280px;
-	/* Customizar */
 	/* padding: 1rem; */
 	position: relative;
 }
@@ -139,6 +138,13 @@ header {
 	outline: none;
 }
 
+.action-btns-container {
+	/* position: relative; */
+	display: flex;
+	align-items: center;
+	position: relative;
+}
+
 .search-btn {
 	margin-top: 10px;
 	padding: 0.6rem 2rem;
@@ -146,12 +152,26 @@ header {
 	border: none;
 	color: white;
 	cursor: pointer;
+
 }
 
 .search-btn:hover {
 	transform: scale(1.03);
 	filter: brightness(1.09);
 }
+
+.reset-btn {
+	background: none;
+	border: none;
+	outline: none;
+	position: absolute;
+	right: -40px;
+	top: 20px;
+	width: 30px;
+	cursor: pointer;
+	color: green;
+}
+
 
 .bg-grey {
 	background: rgb(138, 138, 138);
@@ -187,7 +207,7 @@ header {
 	justify-content: space-between;
 	gap: 5rem;
 	z-index: 999;
-	left: -100vw;
+	left: -300px;
 	transition: 0.3s ease-in-out;
 	width: 300px;
 
@@ -223,17 +243,26 @@ header {
 	margin: 0 auto;
 	background: #1b1b1b;
 	border: 1px solid #ffffff;
-	padding: 3rem;
+	padding: 1.5rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
 	gap: 2rem;
-
 	-webkit-box-shadow: 0px 0px 0px 9999px rgba(0, 0, 0, 0.5);
 	box-shadow: 0px 0px 0px 9999px rgba(0, 0, 0, 0.5);
+	position: relative;
+
+}
 
 
+.guide-dialog-popup {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	background: none;
+	border: none;
 }
 
 .guide-rule {
@@ -285,7 +314,18 @@ header {
 	color: #4eb645;
 }
 
-.guide-popup img {}
+.social-icons-wrapper img {
+	max-width: 25px;
+	border: none;
+}
+
+.social-icons-wrapper {
+	margin-top: 12px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.8rem;
+}
 
 @media (max-width: 400px) {
 	.wordle-square {
@@ -293,7 +333,8 @@ header {
 	}
 
 	.main-nav {
-		width: 80vw;
+		width: 70vw;
+		left: -70vw;
 	}
 
 	.guide-rule-content,

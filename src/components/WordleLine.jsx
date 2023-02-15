@@ -24,16 +24,27 @@ export default function WordleLine(props) {
 				<input
 					type="text"
 					maxLength="1"
-					placeholder=""
 					className={`wordle-square ${wordleBG}`}
 					key={`square_${i}`}
 					ref={ref}
+					value={props.wordleLines[props.lineIndex][i].letter}
 					onChange={(event) => {
 						event.persist();
-						console.log(event);
 						props.changeLetter(event, props.lineIndex, i);
-						if (inputRefs.current[i + 1] && event.target.value != "") {
+					}}
+					onKeyDown={(event) => {
+						if (
+							inputRefs.current[i + 1] &&
+							event.target.value != "" &&
+							event.key != "Backspace"
+						) {
 							inputRefs.current[i + 1].current.focus();
+						} else if (
+							inputRefs.current[i - 1] &&
+							event.key === "Backspace" &&
+							event.target.value === ""
+						) {
+							inputRefs.current[i - 1].current.focus();
 						}
 					}}
 					onClick={(event) => {
