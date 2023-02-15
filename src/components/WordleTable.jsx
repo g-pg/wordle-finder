@@ -3,7 +3,6 @@ import { words } from "../data/words.js";
 import WordleLine from "./WordleLine";
 import resetIcon from "../assets/img/reset-icon.svg";
 import PossibleWordsEl from "./possibleWordsEl.jsx";
-// import PossibleWordsEl from "./possibleWordsEl.jsx";
 
 export default function WordleTable(props) {
 	const [renderWords, setRenderWords] = useState(false);
@@ -153,29 +152,10 @@ export default function WordleTable(props) {
 		);
 	});
 
-	function renderContent() {
-		if (incompleteLine) {
-			setContentEl("* É preciso completar no mínimo a primeira linha.");
-		} else if (possibleWords.length > 0) {
-			setContentEl(possibleWords.join(", ") + ".");
-		} else {
-			setContentEl(
-				<>
-					Nenhuma palavra encontrada.
-					<br />
-					<br />
-					Verifique se não há contradições na tabela ou se você está usando acentos.
-				</>
-			);
-		}
-	}
-
-	const [errorMessage, setErrorMessage] = useState("");
 	const [contentEl, setContentEl] = useState("");
 
 	function resetTable() {
 		setRenderWords(false);
-		setErrorMessage(false);
 		setWordleLines((prev) => (prev = feedLines()));
 	}
 
@@ -200,7 +180,7 @@ export default function WordleTable(props) {
 					Complete mais uma linha e tente outra vez.
 				</>
 			);
-		} else if (possibleWords.length > 1) {
+		} else if (possibleWords.length >= 1) {
 			setContentEl(<PossibleWordsEl possibleWords={possibleWords} />);
 		}
 	}

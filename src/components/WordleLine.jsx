@@ -64,7 +64,7 @@ export default function WordleLine(props) {
 			);
 		}
 		setSquaresArray(updatedSquaresArray);
-	}, [props.wordleLines, props.lineIndex]);
+	}, [props.wordleLines]);
 
 	return <div className="wordle-line">{squaresArray}</div>;
 }

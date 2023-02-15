@@ -123,13 +123,13 @@ header {
 
 .wordle-square {
 	aspect-ratio: 1;
-	max-width: 60px;
+	max-width: 80px;
 	border: 2px solid var(--grey);
 	background: none;
 	color: white;
 	text-align: center;
 	font-weight: 700;
-	font-size: 1.8rem;
+	font-size: 3rem;
 	text-transform: uppercase;
 	cursor: pointer;
 	user-select: none;
@@ -342,9 +342,10 @@ header {
 	gap: 0.8rem;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 500px) {
 	.wordle-square {
 		max-width: 45px;
+		font-size: 1.8rem;
 	}
 
 	.main-nav {
