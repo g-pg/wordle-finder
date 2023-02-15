@@ -1,10 +1,10 @@
+import Credits from "./Credits";
 import React, { useState, useRef, useEffect } from "react";
-import gitHubIcon from "../assets/img/github-icon.svg";
-import lnIcon from "../assets/img/linkedin-icon.svg";
 
 export function Header(props) {
 	const [burgerOpen, setburgerOpen] = useState(false);
 	const headerRef = useRef();
+	const navRef = useRef();
 	function openBurger() {
 		setburgerOpen((prevburgerOpen) => !prevburgerOpen);
 	}
@@ -17,15 +17,26 @@ export function Header(props) {
 		props.openGuide();
 		setburgerOpen(false);
 	}
-	const [theme, setTheme] = useState("light-theme");
+	const [theme, setTheme] = useState(JSON.parse(localStorage.getItem("theme")) || "dark-theme");
 
 	function toggleTheme() {
 		setTheme((prevTheme) => {
 			return prevTheme === "dark-theme" ? "light-theme" : "dark-theme";
 		});
-		document.body.className = theme;
-		document.querySelector(".theme-toggler").classList.toggle("theme-toggler-toggle");
 	}
+
+	function handleChangePage(page) {
+		props.changePage(page);
+		setburgerOpen(false);
+	}
+	useEffect(() => {
+		localStorage.setItem("theme", JSON.stringify(theme));
+		document.body.className = theme;
+	}, [theme]);
+
+	useEffect(() => {
+		document.body.style.overflow = burgerOpen ? "hidden" : "unset";
+	}, [burgerOpen]);
 	return (
 		<>
 			<header ref={headerRef}>
@@ -36,35 +47,21 @@ export function Header(props) {
 					>
 						<div className="burger-icon"></div>
 					</div>
-					<h1 className="header-title">Wordle Finder</h1>
+					<h1 className="header-title" onClick={() => handleChangePage("home")}>
+						Wordle Finder
+					</h1>
 					<div className="theme-toggler" onClick={toggleTheme}>
 						<div className="theme-toggler-ball"></div>
 					</div>
 				</div>
 			</header>
-			<nav className={`main-nav ${burgerOpen ? "open" : ""}`}>
+			<nav className={`main-nav ${burgerOpen ? "open" : ""}`} ref={navRef}>
 				<ul>
-					<li>Home</li>
+					<li onClick={() => handleChangePage("home")}>Home</li>
 					<li onClick={handleGuideClick}>Guia</li>
-					<li>Sobre</li>
+					<li onClick={() => handleChangePage("about")}>Sobre</li>
 				</ul>
-				<div className="credits-wrapper">
-					<h3 className="dev-by">
-						Desenvolvido por
-						<br /> Gabriel Gusso
-					</h3>
-					<div className="social-icons-wrapper">
-						<a href="https://github.com/g-pg" target={"__blank"}>
-							<img src={gitHubIcon} alt="ícone github" />
-						</a>
-						<a
-							href="https://www.linkedin.com/in/gabriel-gusso-828045263/"
-							target="__blank"
-						>
-							<img src={lnIcon} alt="ícone linkedin" />
-						</a>
-					</div>
-				</div>
+				<Credits />
 			</nav>
 		</>
 	);

@@ -9,7 +9,19 @@ export default function WordleTable(props) {
 	const [possibleWords, setPossibleWords] = useState(words);
 	const [wordleLines, setWordleLines] = useState(() => feedLines());
 	const [incompleteLine, setIncompleteLine] = useState(true);
+	const linesEl = wordleLines.map((line, index) => {
+		return (
+			<WordleLine
+				key={`line_${index}`}
+				lineIndex={index}
+				changeLetter={changeLetter}
+				changeLetterVal={changeLetterVal}
+				wordleLines={wordleLines}
+			/>
+		);
+	});
 
+	const [contentEl, setContentEl] = useState("");
 	function feedLines() {
 		let lines = [];
 		for (let i = 0; i < 6; i++) {
@@ -139,20 +151,6 @@ export default function WordleTable(props) {
 			});
 		});
 	}
-
-	const linesEl = wordleLines.map((line, index) => {
-		return (
-			<WordleLine
-				key={`line_${index}`}
-				lineIndex={index}
-				changeLetter={changeLetter}
-				changeLetterVal={changeLetterVal}
-				wordleLines={wordleLines}
-			/>
-		);
-	});
-
-	const [contentEl, setContentEl] = useState("");
 
 	function resetTable() {
 		setRenderWords(false);
