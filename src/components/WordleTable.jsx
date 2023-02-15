@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { words } from "../data/words.js";
 import WordleLine from "./WordleLine";
 import resetIcon from "../assets/img/reset-icon.svg";
+import PossibleWordsEl from "./possibleWordsEl.jsx";
+// import PossibleWordsEl from "./possibleWordsEl.jsx";
 
 export default function WordleTable(props) {
 	const [renderWords, setRenderWords] = useState(false);
@@ -151,14 +153,13 @@ export default function WordleTable(props) {
 		);
 	});
 
-	function contentEl() {
-		console.log(incompleteLine);
+	function renderContent() {
 		if (incompleteLine) {
-			return "* É preciso completar no mínimo a primeira linha.";
+			setContentEl("* É preciso completar no mínimo a primeira linha.");
 		} else if (possibleWords.length > 0) {
-			return possibleWords.join(", ") + ".";
+			setContentEl(possibleWords.join(", ") + ".");
 		} else {
-			return (
+			setContentEl(
 				<>
 					Nenhuma palavra encontrada.
 					<br />
@@ -169,13 +170,44 @@ export default function WordleTable(props) {
 		}
 	}
 
+	const [errorMessage, setErrorMessage] = useState("");
+	const [contentEl, setContentEl] = useState("");
+
 	function resetTable() {
 		setRenderWords(false);
+		setErrorMessage(false);
 		setWordleLines((prev) => (prev = feedLines()));
-		console.log(wordleLines);
 	}
 
-	// useEffect(() => {}, [possibleWords, wordleLines]);
+	function getContent() {
+		if (incompleteLine) {
+			setContentEl("É preciso completar no mínimo a primeira linha.");
+		} else if (possibleWords.length === 0) {
+			setContentEl(
+				<>
+					Nenhuma palavra encontrada.
+					<br />
+					<br />
+					Verifique se não há contradições na tabela ou se você está usando acentos.
+				</>
+			);
+		} else if (possibleWords.length >= 100) {
+			setContentEl(
+				<>
+					Há mais palavras possíveis que estrelas no céu.
+					<br />
+					<br />
+					Complete mais uma linha e tente outra vez.
+				</>
+			);
+		} else if (possibleWords.length > 1) {
+			setContentEl(<PossibleWordsEl possibleWords={possibleWords} />);
+		}
+	}
+
+	useEffect(() => {
+		getContent();
+	}, [possibleWords]);
 
 	return (
 		<>
@@ -190,11 +222,9 @@ export default function WordleTable(props) {
 					</button>
 				</div>
 			</section>
-			{renderWords && (
-				<section className="possible-words container">
-					<p className="possible-words-content">{contentEl()}</p>
-				</section>
-			)}
+			<section className="possible-words container">
+				{renderWords && <p className="possible-words-content">{contentEl}</p>}
+			</section>
 		</>
 	);
 }

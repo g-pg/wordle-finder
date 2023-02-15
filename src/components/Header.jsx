@@ -6,7 +6,6 @@ export function Header(props) {
 	const headerRef = useRef();
 	function openBurger() {
 		setburgerOpen((prevburgerOpen) => !prevburgerOpen);
-		console.log(burgerOpen);
 	}
 	React.useEffect(() => {
 		const headerHeight = headerRef.current.offsetHeight;
