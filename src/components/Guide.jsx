@@ -6,7 +6,7 @@ import Popup from "reactjs-popup";
 export default function Guide(props) {
 	return (
 		<Popup
-			position="right center"
+			position="center"
 			open={props.isOpen}
 			closeOnDocumentClick
 			onClose={props.toggleOpen}
