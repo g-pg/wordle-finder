@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { words } from "../data/words.js";
 import WordleLine from "./WordleLine";
 import resetIcon from "../assets/img/reset-icon.svg";
+
 export default function WordleTable(props) {
 	const [renderWords, setRenderWords] = useState(false);
 	const [possibleWords, setPossibleWords] = useState(words);
 	const [wordleLines, setWordleLines] = useState(() => feedLines());
-
 	const [incompleteLine, setIncompleteLine] = useState(true);
 
 	function feedLines() {
@@ -20,6 +20,7 @@ export default function WordleTable(props) {
 		}
 		return lines;
 	}
+
 	function searchWords() {
 		setPossibleWords(words);
 
@@ -104,18 +105,6 @@ export default function WordleTable(props) {
 		});
 	}
 
-	const linesEl = wordleLines.map((line, index) => {
-		return (
-			<WordleLine
-				key={`line_${index}`}
-				lineIndex={index}
-				changeLetter={changeLetter}
-				changeLetterVal={changeLetterVal}
-				wordleLines={wordleLines}
-			/>
-		);
-	});
-
 	function changeLetterVal(event, lineIndex, squareIndex) {
 		setWordleLines((prevWordleLines) => {
 			return prevWordleLines.map((line, line_i) => {
@@ -150,6 +139,18 @@ export default function WordleTable(props) {
 		});
 	}
 
+	const linesEl = wordleLines.map((line, index) => {
+		return (
+			<WordleLine
+				key={`line_${index}`}
+				lineIndex={index}
+				changeLetter={changeLetter}
+				changeLetterVal={changeLetterVal}
+				wordleLines={wordleLines}
+			/>
+		);
+	});
+
 	function contentEl() {
 		console.log(incompleteLine);
 		if (incompleteLine) {
@@ -173,7 +174,9 @@ export default function WordleTable(props) {
 		setWordleLines((prev) => (prev = feedLines()));
 		console.log(wordleLines);
 	}
+
 	// useEffect(() => {}, [possibleWords, wordleLines]);
+
 	return (
 		<>
 			<section className="game-table">

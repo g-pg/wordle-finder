@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import rule1 from "../assets/img/rule1.png";
 import rule2 from "../assets/img/rule2.png";
 import Popup from "reactjs-popup";
-// import "reactjs-popup/dist/index.css";
 
 export default function Guide(props) {
 	return (

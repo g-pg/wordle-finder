@@ -29,7 +29,7 @@ export function Header(props) {
 						<div className="burger-icon"></div>
 					</div>
 
-					<h1 className="header-title">Wordle Helper</h1>
+					<h1 className="header-title">Wordle Finder</h1>
 				</div>
 			</header>
 			<nav className={`main-nav ${burgerOpen ? "open" : ""}`}>
@@ -56,7 +56,6 @@ export function Header(props) {
 					</div>
 				</div>
 			</nav>
-			{/* <Guide /> */}
 		</>
 	);
 }
