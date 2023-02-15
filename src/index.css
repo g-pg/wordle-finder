@@ -462,7 +462,7 @@ header {
 }
 
 .credits-wrapper {
-	color: white;
+	color: var(--text-color);
 	display: flex;
 	flex-direction: column-reverse;
 	align-items: center;
