@@ -28,21 +28,42 @@ body {
 /*  */
 
 :root {
-	--green: #538d4e;
-	--grey: #3a3a3c;
+	--green: #6eb967;
+	--grey: #b1b1b1;
+	--yellow: #e7c738;
+
 }
+
+.dark-theme {
+	--bg-color: #1a1a1b;
+	--header-color: #202020;
+	--text-color: #fefefe;
+	--borders-color: #3a3a3c;
+	--menu-hover: #b1b1b1;
+	--svg-filter: brightness(100);
+}
+
+.light-theme {
+	--bg-color: #ececec;
+	--header-color: #eeeeee;
+	--text-color: #000000;
+	--borders-color: #adadad;
+	--menu-hover: #cfcfcf;
+	--svg-filter: brightness(0);
+}
+
 
 body {
 	min-height: 100vh;
-	background-color: #1a1a1b;
+	background-color: var(--bg-color);
 	font-family: "Inter", sans-serif;
 }
 
 header {
-	background: #202020;
-	color: #fefefe;
+	background: var(--header-color);
+	color: --text-color;
 	padding: 0.7rem 1.2rem;
-	border-bottom: 2px solid #3a3a3c
+	border-bottom: 2px solid var(--borders-color);
 }
 
 /* Burger */
@@ -63,7 +84,7 @@ header {
 	content: "";
 	width: 100%;
 	height: 3px;
-	background: #fefefe;
+	background: var(--text-color);
 	position: absolute;
 	border-radius: 10px;
 	transition: 0.3s ease-in-out;
@@ -97,6 +118,7 @@ header {
 }
 
 .header-title {
+	color: var(--text-color);
 	font-size: 0.8rem;
 }
 
@@ -124,7 +146,7 @@ header {
 .wordle-square {
 	aspect-ratio: 1;
 	max-width: 80px;
-	border: 2px solid var(--grey);
+	border: 2px solid var(--borders-color);
 	background: none;
 	color: white;
 	text-align: center;
@@ -149,12 +171,15 @@ header {
 .search-btn {
 	margin-top: 10px;
 	padding: 0.6rem 2rem;
-	background: var(--green);
-	border: none;
-	color: white;
+	/* background: var(--green); */
+	background: none;
+	border: 2px solid var(--borders-color);
+	color: var(--text-color);
+	font-weight: 400;
+	font-size: 0.8rem;
 	cursor: pointer;
 	border-radius: 4px;
-	;
+
 }
 
 .search-btn:hover {
@@ -171,37 +196,37 @@ header {
 	top: 20px;
 	width: 30px;
 	cursor: pointer;
-	color: green;
+	filter: var(--svg-filter);
 }
 
 
 .bg-grey {
-	background: rgb(138, 138, 138);
+	background: var(--grey)
 }
 
 .bg-yellow {
-	background: rgb(201, 169, 29);
+	background: var(--yellow);
 }
 
 .bg-green {
-	background: #538d4e;
+	background: var(--green)
 }
 
 .possible-words-content {
-	color: white;
+	color: var(--text-color);
 	text-align: center;
 	text-justify: newspaper;
-	font-weight: 400;
+	font-weight: 500;
 	line-height: 150%;
 	padding: 2rem;
 	font-size: 12px;
 }
 
 .main-nav {
-	color: white;
+	color: var(--text-color);
 	position: absolute;
 	left: 0;
-	background: #242424;
+	background: var(--header-color);
 	padding-bottom: 2rem;
 	display: flex;
 	flex-direction: column;
@@ -235,6 +260,7 @@ header {
 	padding: 1.3rem 0.8rem;
 	/* border-radius: 5px; */
 	text-align: center;
+	font-weight: 600;
 }
 
 .main-nav li>a {
@@ -242,7 +268,7 @@ header {
 }
 
 .main-nav li:hover {
-	background: #585858;
+	background: var(--menu-hover);
 }
 
 .dev-by {
@@ -252,12 +278,26 @@ header {
 	line-height: 1.5;
 }
 
+.social-icons-wrapper img {
+	max-width: 25px;
+	border: none;
+	filter: var(--svg-filter);
+}
+
+.social-icons-wrapper {
+	margin-top: 12px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.8rem;
+}
+
 .guide-popup {
 	max-width: 500px;
 	width: 80%;
 	margin: 0 auto;
-	background: #1b1b1b;
-	border: 1px solid #ffffff;
+	background: var(--bg-color);
+	border: 1px solid var(--text-color);
 	padding: 1.5rem;
 	display: flex;
 	flex-direction: column;
@@ -290,7 +330,7 @@ header {
 
 .guide-rule-content,
 .colors-ul {
-	color: white;
+	color: var(--text-color);
 	font-weight: 400;
 	font-size: 14px;
 	line-height: 1.3;
@@ -299,7 +339,7 @@ header {
 }
 
 .colors-ul {
-	color: white;
+	color: var(--text-color);
 	padding: 0;
 	margin: 0;
 
@@ -316,31 +356,20 @@ header {
 
 .span-grey {
 	font-weight: 500;
-	color: #a3a3a3;
+	color: var(--grey);
 }
 
 .span-yellow {
 	font-weight: 500;
-	color: rgb(231, 192, 19);
+	color: var(--yellow);
 }
 
 .span-green {
 	font-weight: 500;
-	color: #4eb645;
+	color: var(--green);
 }
 
-.social-icons-wrapper img {
-	max-width: 25px;
-	border: none;
-}
 
-.social-icons-wrapper {
-	margin-top: 12px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 0.8rem;
-}
 
 @media (max-width: 500px) {
 	.wordle-square {

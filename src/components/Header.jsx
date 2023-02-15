@@ -1,13 +1,14 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import gitHubIcon from "../assets/img/github-icon.svg";
 import lnIcon from "../assets/img/linkedin-icon.svg";
+
 export function Header(props) {
 	const [burgerOpen, setburgerOpen] = useState(false);
 	const headerRef = useRef();
 	function openBurger() {
 		setburgerOpen((prevburgerOpen) => !prevburgerOpen);
 	}
-	React.useEffect(() => {
+	useEffect(() => {
 		const headerHeight = headerRef.current.offsetHeight;
 		document.querySelector(".main-nav").style.height = `calc(100vh - ${headerHeight}px)`;
 	}, []);
@@ -16,7 +17,14 @@ export function Header(props) {
 		props.openGuide();
 		setburgerOpen(false);
 	}
+	const [theme, setTheme] = useState("light-theme");
 
+	function toggleTheme() {
+		setTheme((prevTheme) => {
+			return prevTheme === "dark-theme" ? "light-theme" : "dark-theme";
+		});
+		document.body.className = theme;
+	}
 	return (
 		<>
 			<header ref={headerRef}>
@@ -27,8 +35,9 @@ export function Header(props) {
 					>
 						<div className="burger-icon"></div>
 					</div>
-
-					<h1 className="header-title">Wordle Finder</h1>
+					<h1 className="header-title" onClick={toggleTheme}>
+						Wordle Finder
+					</h1>
 				</div>
 			</header>
 			<nav className={`main-nav ${burgerOpen ? "open" : ""}`}>

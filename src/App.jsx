@@ -9,6 +9,7 @@ function App() {
 	function openGuide() {
 		setGuideOpen((open) => !open);
 	}
+
 	return (
 		<>
 			<Header openGuide={openGuide} />
