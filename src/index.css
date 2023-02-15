@@ -120,6 +120,7 @@ header {
 .header-title {
 	color: var(--text-color);
 	font-size: 0.8rem;
+	cursor: pointer;
 }
 
 .game-container {
