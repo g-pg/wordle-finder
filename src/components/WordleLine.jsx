@@ -28,6 +28,11 @@ export default function WordleLine(props) {
 					key={`square_${i}`}
 					ref={ref}
 					value={props.wordleLines[props.lineIndex][i].letter}
+					onInput={(event) => {
+						if (event.target.value.length === 1) {
+							event.target.value = event.target.value[0];
+						}
+					}}
 					onChange={(event) => {
 						event.persist();
 						props.changeLetter(event, props.lineIndex, i);
