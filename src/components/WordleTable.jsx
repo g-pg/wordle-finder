@@ -9,6 +9,7 @@ export default function WordleTable(props) {
 	const [possibleWords, setPossibleWords] = useState(words);
 	const [wordleLines, setWordleLines] = useState(() => feedLines());
 	const [incompleteLine, setIncompleteLine] = useState(true);
+	const [contentEl, setContentEl] = useState("");
 	const linesEl = wordleLines.map((line, index) => {
 		return (
 			<WordleLine
@@ -21,7 +22,6 @@ export default function WordleTable(props) {
 		);
 	});
 
-	const [contentEl, setContentEl] = useState("");
 	function feedLines() {
 		let lines = [];
 		for (let i = 0; i < 6; i++) {
