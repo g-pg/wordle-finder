@@ -29,6 +29,10 @@ export function Header(props) {
 		props.changePage(page);
 		setburgerOpen(false);
 	}
+
+	function handleClickOutsideNav(event) {
+		if (!navRef.current.contains(event.target)) setburgerOpen(false);
+	}
 	useEffect(() => {
 		localStorage.setItem("theme", JSON.stringify(theme));
 		document.body.className = theme;
@@ -37,6 +41,15 @@ export function Header(props) {
 	useEffect(() => {
 		document.body.style.overflow = burgerOpen ? "hidden" : "unset";
 	}, [burgerOpen]);
+
+	useEffect(() => {
+		document.addEventListener("mousedown", handleClickOutsideNav);
+		console.log("add");
+		return () => {
+			console.log("return");
+			document.removeEventListener("mousedown", handleClickOutsideNav);
+		};
+	}, []);
 	return (
 		<>
 			<header ref={headerRef}>
