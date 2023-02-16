@@ -112,6 +112,8 @@ export default function WordleTable(props) {
 					: line.map((square, square_i) => {
 							return square_i != squareIndex
 								? square
+								: event.target.value === ""
+								? { letter: "", correctPosition: false, exists: false }
 								: { ...square, letter: event.target.value.toUpperCase() };
 					  });
 			});
