@@ -5,6 +5,7 @@ export function Header(props) {
 	const [burgerOpen, setburgerOpen] = useState(false);
 	const headerRef = useRef();
 	const navRef = useRef();
+	const burgerRef = useRef();
 	function openBurger() {
 		setburgerOpen((prevburgerOpen) => !prevburgerOpen);
 	}
@@ -31,7 +32,9 @@ export function Header(props) {
 	}
 
 	function handleClickOutsideNav(event) {
-		if (!navRef.current.contains(event.target)) setburgerOpen(false);
+		if (!navRef.current.contains(event.target) && !burgerRef.current.contains(event.target)) {
+			setburgerOpen(false);
+		}
 	}
 	useEffect(() => {
 		localStorage.setItem("theme", JSON.stringify(theme));
@@ -57,6 +60,7 @@ export function Header(props) {
 					<div
 						onClick={openBurger}
 						className={`burger-container ${burgerOpen ? "open" : ""}`}
+						ref={burgerRef}
 					>
 						<div className="burger-icon"></div>
 					</div>

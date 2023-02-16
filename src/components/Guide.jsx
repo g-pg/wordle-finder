@@ -25,7 +25,7 @@ export default function Guide(props) {
 				<div className="guide-rule">
 					<ul className="colors-ul">
 						<li>
-							Letras <span className="span-grey">cinzas</span> não estão na
+							Letras <span className="span-grey">cinza</span> não estão na
 							palavra.
 						</li>
 						<li>
