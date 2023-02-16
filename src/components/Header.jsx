@@ -78,7 +78,7 @@ export function Header(props) {
 					<li onClick={handleGuideClick}>Guia</li>
 					<li onClick={() => handleChangePage("about")}>Sobre</li>
 				</ul>
-				<Credits />
+				{/* <Credits /> */}
 			</nav>
 		</>
 	);
