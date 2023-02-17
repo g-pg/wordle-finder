@@ -11,7 +11,7 @@ export function Header(props) {
 	}
 	useEffect(() => {
 		const headerHeight = headerRef.current.offsetHeight;
-		document.querySelector(".main-nav").style.height = `calc(100vh - ${headerHeight}px)`;
+		document.querySelector(".main-nav").style.height = `calc(100svh - ${headerHeight}px)`;
 	}, []);
 
 	function handleGuideClick() {
@@ -78,7 +78,7 @@ export function Header(props) {
 					<li onClick={handleGuideClick}>Guia</li>
 					<li onClick={() => handleChangePage("about")}>Sobre</li>
 				</ul>
-				{/* <Credits /> */}
+				<Credits />
 			</nav>
 		</>
 	);

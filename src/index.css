@@ -272,7 +272,7 @@ header {
 	position: absolute;
 	left: 0;
 	background: var(--header-color);
-	padding-bottom: 2rem;
+	padding-bottom: 1rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
