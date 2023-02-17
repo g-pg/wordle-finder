@@ -11,7 +11,7 @@ export function Header(props) {
 	}
 	useEffect(() => {
 		const headerHeight = headerRef.current.offsetHeight;
-		document.querySelector(".main-nav").style.height = `calc(100svh - ${headerHeight}px)`;
+		document.querySelector(".main-nav").style.height = `calc(100dvh - ${headerHeight}px)`;
 	}, []);
 
 	function handleGuideClick() {
