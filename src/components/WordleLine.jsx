@@ -30,9 +30,12 @@ export default function WordleLine(props) {
 					value={props.wordleLines[props.lineIndex][i].letter}
 					onInput={(event) => {
 						event.persist();
-						let letterInput = event.target.value;
+						let letterInput = event.target.value.toUpperCase();
 						if (letterInput.length > 1) {
 							event.target.value = letterInput[letterInput.length - 1];
+						}
+						if (!letterInput.match(/[A-Z]/g)) {
+							event.target.value = "";
 						}
 					}}
 					onChange={(event) => {
