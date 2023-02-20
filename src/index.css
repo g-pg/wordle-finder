@@ -38,7 +38,7 @@ section {
 	--header-color: #202020;
 	--text-color: #fefefe;
 	--borders-color: #3a3a3c;
-	--menu-hover: #b1b1b1;
+	--menu-hover: var(--borders-color);
 	--svg-filter: brightness(100);
 	--theme-toggler-bg: white;
 	--theme-toggler-ball: black;
