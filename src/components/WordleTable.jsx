@@ -171,7 +171,7 @@ export default function WordleTable(props) {
 					Verifique se não há contradições na tabela ou se você está usando acentos.
 				</>
 			);
-		} else if (possibleWords.length >= 100) {
+		} else if (possibleWords.length > 100) {
 			setContentEl(
 				<>
 					Há mais palavras possíveis que estrelas no céu.
@@ -180,7 +180,7 @@ export default function WordleTable(props) {
 					Complete a próxima linha e tente outra vez.
 				</>
 			);
-		} else if (possibleWords.length >= 1) {
+		} else if (possibleWords.length > 0) {
 			setContentEl(<PossibleWordsEl possibleWords={possibleWords} />);
 		}
 	}
