@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Header } from "./components/Header";
 import Guide from "./components/Guide";
-import WordleTable from "./components/WordleTable";
+import Home from "./components/Home";
 import About from "./components/About";
 function App() {
 	const [guideOpen, setGuideOpen] = useState(true);
@@ -10,14 +10,13 @@ function App() {
 	function openGuide() {
 		setGuideOpen((open) => !open);
 	}
-
 	function changePage(page) {
 		page === "home" ? setPage("home") : setPage("about");
 	}
 	return (
 		<>
 			<Header openGuide={openGuide} changePage={changePage} />
-			{page === "home" && <WordleTable />}
+			{page === "home" && <Home />}
 			<Guide isOpen={guideOpen} toggleOpen={openGuide} />
 			{page === "about" && <About />}
 		</>
