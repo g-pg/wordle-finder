@@ -47,9 +47,7 @@ export function Header(props) {
 
 	useEffect(() => {
 		document.addEventListener("mousedown", handleClickOutsideNav);
-		console.log("add");
 		return () => {
-			console.log("return");
 			document.removeEventListener("mousedown", handleClickOutsideNav);
 		};
 	}, []);
