@@ -166,6 +166,10 @@ header {
 	cursor: pointer;
 }
 
+header a {
+	text-decoration: none;
+}
+
 .game-container {
 	display: flex;
 	flex-direction: column;
@@ -207,7 +211,6 @@ header {
 }
 
 .action-btns-container {
-	/* position: relative; */
 	display: flex;
 	align-items: center;
 	position: relative;
@@ -216,7 +219,6 @@ header {
 .search-btn {
 	margin-top: 10px;
 	padding: 0.6rem 2rem;
-	/* background: var(--green); */
 	background: none;
 	border: 2px solid var(--borders-color);
 	color: var(--text-color);
@@ -268,7 +270,6 @@ header {
 }
 
 .main-nav {
-	color: var(--text-color);
 	position: absolute;
 	left: 0;
 	background: var(--header-color);
@@ -282,6 +283,7 @@ header {
 	left: -300px;
 	transition: 0.3s ease-in-out;
 	width: 300px;
+	height: 100svh;
 	box-shadow: 2px 0px 10px -4px rgba(0, 0, 0, 0.1);
 	-webkit-box-shadow: 2px 0px 10px -4px rgba(0, 0, 0, 0.1);
 	-moz-box-shadow: 2px 0px 10px -4px rgba(0, 0, 0, 0.1);
@@ -304,14 +306,22 @@ header {
 .main-nav li {
 	width: 100%;
 	cursor: pointer;
-	padding: 1.3rem 0.8rem;
-	/* border-radius: 5px; */
 	text-align: center;
 	font-weight: 600;
 }
 
-.main-nav li>a {
+.main-nav li a {
 	width: 100%;
+}
+
+.main-nav li a,
+.main-nav li p {
+	padding: 1.3rem;
+	text-decoration: none;
+	color: var(--text-color);
+	display: block;
+	padding: 1.3rem;
+
 }
 
 .main-nav li:hover {

@@ -1,5 +1,6 @@
 import Credits from "./Credits";
 import React, { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export function Header(props) {
 	const [burgerOpen, setburgerOpen] = useState(false);
@@ -26,23 +27,25 @@ export function Header(props) {
 		});
 	}
 
-	function handleChangePage(page) {
-		props.changePage(page);
-		setburgerOpen(false);
-	}
+	// function handleChangePage(page) {
+	// 	setburgerOpen(false);
+	// }
 
 	function handleClickOutsideNav(event) {
 		if (!navRef.current.contains(event.target) && !burgerRef.current.contains(event.target)) {
 			setburgerOpen(false);
 		}
 	}
+
 	useEffect(() => {
 		localStorage.setItem("theme", JSON.stringify(theme));
 		document.body.className = theme;
 	}, [theme]);
 
 	useEffect(() => {
-		document.body.style.overflow = burgerOpen ? "hidden" : "unset";
+		if (window.matchMedia("(max-width: 500px)").matches) {
+			document.body.style.overflow = burgerOpen ? "hidden" : "unset";
+		}
 	}, [burgerOpen]);
 
 	useEffect(() => {
@@ -62,9 +65,9 @@ export function Header(props) {
 					>
 						<div className="burger-icon"></div>
 					</div>
-					<h1 className="header-title" onClick={() => handleChangePage("home")}>
-						Wordle Finder
-					</h1>
+					<Link to="/">
+						<h1 className="header-title">Wordle Finder</h1>
+					</Link>
 					<div className="theme-toggler" onClick={toggleTheme}>
 						<div className="theme-toggler-ball"></div>
 					</div>
@@ -72,9 +75,15 @@ export function Header(props) {
 			</header>
 			<nav className={`main-nav ${burgerOpen ? "open" : ""}`} ref={navRef}>
 				<ul>
-					<li onClick={() => handleChangePage("home")}>Home</li>
-					<li onClick={handleGuideClick}>Guia</li>
-					<li onClick={() => handleChangePage("about")}>Sobre</li>
+					<li onClick={() => setburgerOpen(false)}>
+						<Link to="/">Home</Link>
+					</li>
+					<li onClick={handleGuideClick}>
+						<p>Guia</p>
+					</li>
+					<li onClick={() => setburgerOpen(false)}>
+						<Link to="/sobre">Sobre</Link>
+					</li>
 				</ul>
 				<Credits />
 			</nav>
