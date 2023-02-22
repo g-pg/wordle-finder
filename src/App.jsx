@@ -7,14 +7,11 @@ import { Route, Routes } from "react-router-dom";
 
 function App() {
 	const [guideOpen, setGuideOpen] = useState(true);
-	const [page, setPage] = useState("home");
 
 	function openGuide() {
 		setGuideOpen((open) => !open);
 	}
-	function changePage(page) {
-		page === "home" ? setPage("home") : setPage("about");
-	}
+
 	return (
 		<>
 			<Header openGuide={openGuide} />
