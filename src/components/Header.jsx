@@ -27,10 +27,6 @@ export function Header(props) {
 		});
 	}
 
-	// function handleChangePage(page) {
-	// 	setburgerOpen(false);
-	// }
-
 	function handleClickOutsideNav(event) {
 		if (!navRef.current.contains(event.target) && !burgerRef.current.contains(event.target)) {
 			setburgerOpen(false);
@@ -43,9 +39,9 @@ export function Header(props) {
 	}, [theme]);
 
 	useEffect(() => {
-		if (window.matchMedia("(max-width: 500px)").matches) {
-			document.body.style.overflow = burgerOpen ? "hidden" : "unset";
-		}
+		// 	if (window.matchMedia("(max-width: 500px)").matches) {
+		document.body.style.overflow = burgerOpen ? "hidden" : "unset";
+		// 	}
 	}, [burgerOpen]);
 
 	useEffect(() => {
