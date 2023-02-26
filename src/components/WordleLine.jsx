@@ -1,4 +1,4 @@
-import React, { useRef, memo } from "react";
+import React, { useRef } from "react";
 import Square from "./Square";
 
 function WordleLine(props) {
@@ -25,4 +25,4 @@ function WordleLine(props) {
 	return <div className="wordle-line">{squares}</div>;
 }
 
-export default memo(WordleLine);
+export default WordleLine;

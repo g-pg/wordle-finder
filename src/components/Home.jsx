@@ -93,7 +93,7 @@ function Home() {
 					Verifique se não há contradições na tabela ou se você está usando acentos.
 				</>
 			);
-		} else if (possibleWords.length >= 4000) {
+		} else if (possibleWords.length >= 500) {
 			return (
 				<>
 					Há mais palavras possíveis que estrelas no céu.

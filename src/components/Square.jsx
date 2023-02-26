@@ -1,18 +1,26 @@
-import React, { memo } from "react";
-import classNames from "classnames";
-
-const wordleBG = classNames({
-	"bg-green": props.square.correctPosition && props.square.exists,
-	"bg-yellow": !props.square.correctPosition && props.square.exists,
-	"bg-grey": !props.square.correctPosition && !props.square.exists,
-});
-
 function Square(props) {
-	function handleChange(event) {
-		props.onChange(event, props.lineIndex, props.index);
+	const styles = { background: "none" };
+
+	if (props.square.letter) {
+		if (props.square.correctPosition && props.square.exists) {
+			styles.background = "var(--green)";
+		} else if (!props.square.correctPosition && props.square.exists) {
+			styles.background = "var(--yellow)";
+		} else if (!props.square.correctPosition && !props.square.exists) {
+			styles.background = "var(--grey)";
+		}
 	}
 
-	function handleKeyUp(event) {
+	function handleChange(event) {
+		if (!event.target.value.match(/[A-Z]/i) && event.target.value != "") {
+			event.target.value = "";
+		} else {
+			props.onChange(event, props.lineIndex, props.index);
+		}
+		console.log(props.square.letter);
+	}
+
+	function handleKeyDown(event) {
 		if (
 			props.inputRefs.current[props.index + 1] &&
 			event.target.value !== "" &&
@@ -39,15 +47,16 @@ function Square(props) {
 		<input
 			type="text"
 			maxLength="1"
-			className={`wordle-square ${props.square.letter ? wordleBG : ""}`}
+			className="wordle-square"
+			style={styles}
 			key={`square_${props.index}`}
 			ref={props.refProp}
 			value={props.square.letter}
 			onChange={handleChange}
-			onKeyUp={handleKeyUp}
+			onKeyUp={handleKeyDown}
 			onClick={handleClick}
 		/>
 	);
 }
 
-export default memo(Square);
+export default Square;
