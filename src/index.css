@@ -31,7 +31,6 @@ section {
 
 /*  */
 
-:root {}
 
 .dark-theme {
 	--bg-color: #1a1a1b;
@@ -74,7 +73,7 @@ body {
 
 header {
 	background: var(--header-color);
-	color: --text-color;
+	color: var(--text-color);
 	padding: 0.7rem 1.2rem;
 	border-bottom: 2px solid var(--borders-color);
 }
@@ -145,11 +144,6 @@ header {
 	height: 100%;
 	background: var(--theme-toggler-ball);
 	border-radius: 100%;
-}
-
-.theme-toggler-toggle {
-	/* filter: invert(); */
-
 }
 
 .d-flex {
