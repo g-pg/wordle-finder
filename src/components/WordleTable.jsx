@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import WordleLine from "./WordleLine";
 import resetIcon from "../assets/img/reset-icon.svg";
 
