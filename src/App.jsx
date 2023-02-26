@@ -3,7 +3,7 @@ import { Header } from "./components/Header";
 import Guide from "./components/Guide";
 import Home from "./components/Home";
 import About from "./components/About";
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
 	const [guideOpen, setGuideOpen] = useState(true);
@@ -14,14 +14,16 @@ function App() {
 
 	return (
 		<>
-			<Header openGuide={openGuide} />
+			<BrowserRouter>
+				<Header openGuide={openGuide} />
 
-			<Guide isOpen={guideOpen} toggleOpen={openGuide} />
+				<Guide isOpen={guideOpen} toggleOpen={openGuide} />
 
-			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/sobre" element={<About />} />
-			</Routes>
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/sobre" element={<About />} />
+				</Routes>
+			</BrowserRouter>
 		</>
 	);
 }
