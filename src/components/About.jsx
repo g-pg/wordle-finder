@@ -39,8 +39,7 @@ export default function About() {
 						dados. <br />
 						<br />
 						Para utilizá-la, basta replicar o seu jogo atual e buscar as palavras
-						possíveis. São renderizadas no máximo cem palavras a cada busca, o que
-						evita quedas de performance.
+						possíveis. São renderizadas no máximo 500 palavras a cada busca.
 					</p>
 					<h1 className="about-title" style={{ marginTop: "3rem" }}>
 						#Dev

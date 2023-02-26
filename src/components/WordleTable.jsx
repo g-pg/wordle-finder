@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import WordleLine from "./WordleLine";
 import resetIcon from "../assets/img/reset-icon.svg";
 
-export default function WordleTable({ searchWords, resetTable }) {
+function WordleTable({ searchWords, resetTable }) {
 	const [wordleLines, setWordleLines] = useState(() => feedLines());
 
 	function handleReset(event) {
@@ -107,3 +107,5 @@ export default function WordleTable({ searchWords, resetTable }) {
 		</>
 	);
 }
+
+export default memo(WordleTable);

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, memo } from "react";
 import WordleTable from "./WordleTable";
 import { words } from "../data/words.js";
 function Home() {
@@ -93,7 +93,7 @@ function Home() {
 					Verifique se não há contradições na tabela ou se você está usando acentos.
 				</>
 			);
-		} else if (possibleWords.length >= 100) {
+		} else if (possibleWords.length >= 500) {
 			return (
 				<>
 					Há mais palavras possíveis que estrelas no céu.
