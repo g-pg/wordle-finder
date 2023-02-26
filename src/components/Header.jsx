@@ -39,9 +39,7 @@ export function Header(props) {
 	}, [theme]);
 
 	useEffect(() => {
-		// 	if (window.matchMedia("(max-width: 500px)").matches) {
 		document.body.style.overflow = burgerOpen ? "hidden" : "unset";
-		// 	}
 	}, [burgerOpen]);
 
 	useEffect(() => {
