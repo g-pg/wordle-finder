@@ -9,7 +9,7 @@ export default function Credits() {
 				<a href="https://github.com/g-pg" target={"__blank"}>
 					<img src={gitHubIcon} alt="ícone github" />
 				</a>
-				<a href="https://www.linkedin.com/in/gabriel-gusso-828045263/" target="__blank">
+				<a href="https://www.linkedin.com/in/ggusso/" target="__blank">
 					<img src={lnIcon} alt="ícone linkedin" />
 				</a>
 			</div>
